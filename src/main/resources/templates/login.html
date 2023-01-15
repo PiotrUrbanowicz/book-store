@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+  <link rel="stylesheet" href="/common.css">
+  <link rel="stylesheet" href="/login.css">
+  <script src="/validator.js"></script>
+</head>
+<body>
+
+<div th:replace="fragments.html :: logo"></div>
+<div th:replace="fragments.html :: menu"></div>
+<div id="content">
+
+  <form method="post" id="form" onsubmit="return validateLoginForm()">
+    <input type="text" placeholder="login" class="text-input" name="login" id="login">
+    <input type="text" placeholder="password" class="text-input" name="password" id="password">
+    <input type="submit">
+  </form>
+    <a href="/register">zarejestruj</a>
+
+</div>
+
+</body>
+</html>

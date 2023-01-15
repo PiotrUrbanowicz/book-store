@@ -1,0 +1,54 @@
+package org.example.controllers;
+
+
+import jakarta.annotation.Resource;
+import org.example.database.IBookDAO;
+import org.example.database.memory.BookDB;
+import org.example.services.IBookService;
+import org.example.sessionObject.SessionObject;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.Optional;
+
+@Controller
+public class CommonController {
+
+    @Resource
+    SessionObject sessionObject;
+
+    @Autowired
+    IBookService BookServiceImpl;
+
+
+    @RequestMapping(value="/main", method= RequestMethod.GET)
+    public String main(){
+        return "redirect:/";
+    }
+
+    @RequestMapping(value="/", method= RequestMethod.GET)
+    public String main(Model model){
+        model.addAttribute("books",this.BookServiceImpl.getBooks());
+        model.addAttribute("logged",this.sessionObject.isLogged());
+        return "main";
+    }
+
+    @RequestMapping(value="/", method= RequestMethod.POST)
+    public String main(@RequestParam String pattern){
+        this.sessionObject.setPattern(pattern);
+        return "redirect:/";
+    }
+
+
+    @RequestMapping(value="/contact", method= RequestMethod.GET)
+    public String contact(Model model){
+        model.addAttribute("logged",this.sessionObject.isLogged());
+        return "contact";
+    }
+
+}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>IT Camp Book Store</title>
+    <link rel="stylesheet" href="/common.css">
+    <link rel="stylesheet" href="/main.css">
+</head>
+<body>
+<div th:replace="fragments.html :: logo"></div>
+<div th:replace="fragments.html :: menu"></div>
+
+<div id="content">
+<div>
+<form method="post">
+    <input type="text" name="pattern" placeholder="szukaj" class="text-input">
+    <input type="submit" value="szukaj" class="button">
+</form>
+</div>
+<div class="book" th:each="book:${books}">
+    <div th:text="${book.title}" class="title"></div>
+    <div th:text="${book.author}" class="author"></div>
+    <div th:text="'Cena: ' + ${book.price}" class="price"></div>
+    <div th:text="'ISBN: ' + ${book.isbn}" class="isbn"></div>
+    <div th:text="'Ilosc: ' + ${book.quantity}" class="quantity"></div>
+</div>
+
+</div>
+</body>
+</html>
