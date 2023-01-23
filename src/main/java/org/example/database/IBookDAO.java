@@ -3,9 +3,16 @@ package org.example.database;
 import org.example.model.Book;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface IBookDAO {
-    public List<Book> getBooks();
+    List<Book> getBooks();
 
-    public List<Book> getBooksByPattern(String pattern);
+    List<Book> getBooksByPattern(String pattern);
+
+    Optional<Book> getBookById(int id);
+
+    void persistBook(Book book);
+
+    void updateBook(Book book);
 }

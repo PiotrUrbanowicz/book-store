@@ -10,11 +10,12 @@ import org.example.services.IAuthenticationService;
 import org.example.sessionObject.SessionObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
 
-@Component
+@Service
 public class AuthenticationServiceImpl implements IAuthenticationService {
 
     @Autowired
@@ -29,9 +30,20 @@ public class AuthenticationServiceImpl implements IAuthenticationService {
         if(userBox.isEmpty() || !userBox.get().getPassword().equals(DigestUtils.md5Hex(password))){
             return false;
         }
-        userBox.get().setPassword(null);
-        this.sessionObject.setUser(userBox.get());
+        /*
+        User.UserBuilder userBuilder=new User.UserBuilder();
+        User userClone = userBuilder.clone(userBox.get());
+        userClone.setPassword(null);
+        this.sessionObject.setUser(userClone);
+        */
+        this.sessionObject.setUser(
+                new User.UserBuilder()
+                .clone(userBox.get())
+                        .password(null)
+                        .build()
+        );
         return true;
+        //nie jest źle ale jest już skomplikowanie gdybyśmy zrobili to w mniej złorzony sposób to też ok
     }
 
 

@@ -7,12 +7,13 @@ import org.example.model.User;
 import org.example.sequence.IIdSequence;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@Component
+@Repository
 public class UserDB implements IUserDAO {
 
     private List<User> users=new ArrayList<>();
@@ -23,7 +24,7 @@ public class UserDB implements IUserDAO {
     users.add(new User( this.userIdSequence.getId(),"Mikolaj", "Janczyk",
             "admin", "21232f297a57a5a743894a0e4a801fc3", User.Role.ADMIN));//admin
     users.add(new User( this.userIdSequence.getId(),"Piotr", "Urbanowicz",
-            "janusz123", "8f6de86901ba906047425ff9f71550dd", User.Role.USER));//janusz123
+            "user123", "21232f297a57a5a743894a0e4a801fc3", User.Role.USER));//admin
 
     }
 

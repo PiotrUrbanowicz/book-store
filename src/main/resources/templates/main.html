@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="/main.css">
 </head>
 <body>
-<div th:replace="fragments.html :: logo"></div>
-<div th:replace="fragments.html :: menu"></div>
+<div th:replace="~{fragments.html :: logo}"></div>
+<div th:replace="~{fragments.html :: menu}"></div>
 
 <div id="content">
 <div>
@@ -23,6 +23,11 @@
     <div th:text="'Cena: ' + ${book.price}" class="price"></div>
     <div th:text="'ISBN: ' + ${book.isbn}" class="isbn"></div>
     <div th:text="'Ilosc: ' + ${book.quantity}" class="quantity"></div>
+    <a th:if="${sessionObject.isAdmin()}" th:href="@{/book/edit/{id}(id=${book.getId()})}" class="edit">Edytuj</a>
+
+<!-- th:if="${sesionObject.isAdmin()}"   -->
+<!--<div th:if="${sessionObject.isAdmin()}" class="edit"> <a href="/book/edit">Edytuj</a></div>-->
+
 </div>
 
 </div>

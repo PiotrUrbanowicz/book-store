@@ -1,8 +1,6 @@
 package org.example.controllers;
 
 import jakarta.annotation.Resource;
-import org.apache.commons.codec.digest.DigestUtils;
-import org.example.database.IUserDAO;
 import org.example.exceptions.UserLoginExistException;
 import org.example.exceptions.UserValidationException;
 import org.example.model.User;
@@ -17,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.Optional;
 
 @Controller
 public class AuthenticationController {
@@ -29,7 +26,7 @@ SessionObject sessionObject;
 
 @RequestMapping(path="/login", method = RequestMethod.GET)
 public String login(Model model){
-    model.addAttribute("logged",this.sessionObject.isLogged());
+    model.addAttribute("sessionObject",this.sessionObject);
     return "login";
 }
 
@@ -51,24 +48,30 @@ public String login(Model model){
 
 @RequestMapping(path = "/register", method = RequestMethod.GET)
     public String register(Model model){
-    model.addAttribute("logged",this.sessionObject.isLogged());
+    model.addAttribute("sessionObject",this.sessionObject);
     model.addAttribute("user",new User());
     return "register";
 }
     @RequestMapping(path = "/register", method = RequestMethod.POST)//
-    public String register(@ModelAttribute User user, @RequestParam String password2){
+    public String register(@ModelAttribute User user,
+                           @RequestParam String password2){
         try {
             UserValidator.validateRegisterUser(user, password2);
             this.authenticationServiceImpl.registerUser(user);
-        } catch (UserValidationException | UserLoginExistException e) {
+        } catch (UserValidationException e) {
             e.printStackTrace();
+            this.sessionObject.setInfo(e.getInfo());
+            return "redirect:/register";
+        }catch(UserLoginExistException e){
+            e.printStackTrace();
+            this.sessionObject.setInfo("login zajety");
             return "redirect:/register";
         }
         return "redirect:/login";
     }
 
     @RequestMapping(path="/logout", method=RequestMethod.GET)
-    public String logout(Model model){
+    public String logout(){
     this.authenticationServiceImpl.logout();
     return "redirect:/login";
     }

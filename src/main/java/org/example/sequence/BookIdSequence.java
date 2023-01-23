@@ -3,8 +3,9 @@ package org.example.sequence;
 import org.springframework.stereotype.Component;
 
 @Component
-public class UserIdSequence implements IUserIdSequence {
-    private int id = 0;
+public class BookIdSequence implements IBookIdSequence{
+
+    private int id=0;
 
 
     @Override
