@@ -39,6 +39,7 @@
         <div th:text="${#numbers.formatDecimal(sum,1,2)} +' zł'" class="sum-price"></div>
         <div class="bin"></div>
     </div>
+        <a href="/order/confirm" class="button">zamów</a>
     </th:block>
     <div th:if="${cart.size==0}">Koszyk jest pusty!!!</div>
 

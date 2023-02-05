@@ -16,9 +16,10 @@ import java.util.Optional;
 @Repository
 public class UserDB implements IUserDAO {
 
-    private List<User> users=new ArrayList<>();
+    private final List<User> users=new ArrayList<>();
 
-    IIdSequence userIdSequence;
+    private final IIdSequence userIdSequence;
+
     public UserDB(@Autowired IIdSequence userIdSequence) {
         this.userIdSequence=userIdSequence;
     users.add(new User( this.userIdSequence.getId(),"Mikolaj", "Janczyk",

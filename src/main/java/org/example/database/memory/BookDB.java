@@ -17,8 +17,8 @@ import java.util.Optional;
 public class BookDB implements IBookDAO {
 
 
-    IIdSequence bookIdSequence;
-    private List<Book> books=new ArrayList<>();
+    private final IIdSequence bookIdSequence;
+    private final List<Book> books=new ArrayList<>();
 
     public BookDB(@Autowired IBookIdSequence bookIdSequence) {
         this.bookIdSequence = bookIdSequence;

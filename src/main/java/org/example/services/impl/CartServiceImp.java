@@ -31,11 +31,15 @@ public class CartServiceImp implements ICartService {
             return;
         }
 
-        if(cart.get(bookId)==null){
+
+        if(cart.get(bookId)==null && bookBox.get().getQuantity()>0){
             cart.put(bookId,new OrderPosition(bookBox.get(),1));
-        }else{
+        }else if(bookBox.get().getQuantity()>cart.get(bookId).getQuantity()){
             cart.get(bookId).incrementQuantity();
+        }else{
+            //TODO: wyjątek
         }
+
     }
 
 
