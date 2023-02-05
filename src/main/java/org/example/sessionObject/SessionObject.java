@@ -1,10 +1,15 @@
 package org.example.sessionObject;
 
+import org.example.model.Book;
+import org.example.model.OrderPosition;
 import org.example.model.User;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.SessionScope;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 
 @Component
 @SessionScope
@@ -12,6 +17,16 @@ public class SessionObject {
    private User user=null;
     private Optional<String> pattern = Optional.empty();
     private String info=null;
+
+
+    public Map<Integer, OrderPosition> getCart() {
+        return cart;
+
+    }
+
+    // key - bookId, value -book and cart quantity
+    private final Map<Integer, OrderPosition> cart=new HashMap<>();
+
    public boolean isLogged(){
        return this.user!=null;
    }

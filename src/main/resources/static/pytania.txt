@@ -1,0 +1,10 @@
+Moje pytania:
+
+templates: cart.html
+1.       <div th:text="${orderPosition.book.title}" class="title"></div>
+        <!--czemu mimo tego że book jest private to nie dostajemy się do niego za pomocą getBook()-->
+2.        <div th:text="${orderPosition.book.autor}" class="author"></div>
+czemu przy jednej literówce odnośnie atrybutu (autor a powinno być author) nie wyświetla się cały html (zwraca błąd)
+
+Whitelabel Error Page
+There was an unexpected error (type=Internal Server Error, status=500).

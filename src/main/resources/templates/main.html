@@ -23,7 +23,12 @@
     <div th:text="'Cena: ' + ${book.price}" class="price"></div>
     <div th:text="'ISBN: ' + ${book.isbn}" class="isbn"></div>
     <div th:text="'Ilosc: ' + ${book.quantity}" class="quantity"></div>
-    <a th:if="${sessionObject.isAdmin()}" th:href="@{/book/edit/{id}(id=${book.getId()})}" class="edit">Edytuj</a>
+    <a th:if="${sessionObject.isAdmin()}" th:href="@{/book/edit/{id}(id=${book.id})}" class="edit">Edytuj</a>
+    <a th:if="${!sessionObject.isAdmin()}" href="/login" class="buy">Zaloguj aby kupić</a>
+    <a th:if="${sessionObject.isLogged()}" th:href="@{/cart/add/{id}(id=${book.id})}" class="buy">Dodaj do koszyka</a>
+
+
+
 
 <!-- th:if="${sesionObject.isAdmin()}"   -->
 <!--<div th:if="${sessionObject.isAdmin()}" class="edit"> <a href="/book/edit">Edytuj</a></div>-->
