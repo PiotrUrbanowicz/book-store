@@ -3,6 +3,7 @@ package org.example.services.impl;
 import jakarta.annotation.Resource;
 import org.example.database.IBookDAO;
 import org.example.database.IOrderDAO;
+import org.example.exceptions.NotEnoughBookException;
 import org.example.model.Order;
 import org.example.model.OrderPosition;
 import org.example.services.ICartService;
@@ -11,8 +12,10 @@ import org.example.sessionObject.SessionObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 @Service
 public class OrderServiceImpl implements IOrderService {
@@ -28,27 +31,30 @@ public class OrderServiceImpl implements IOrderService {
 
     @Override
     public void confirmOrder() {
-        Collection<OrderPosition> orderPositions=sessionObject.getCart().values();
+        Collection<OrderPosition> orderPositions=this.sessionObject.getCart().values();
         for (OrderPosition orderPosition:orderPositions) {
             int quantityAfterOrder = orderPosition.getBook().getQuantity()-orderPosition.getQuantity();
 
             if(quantityAfterOrder>=0) {
                 orderPosition.getBook().setQuantity(quantityAfterOrder);
             }else{
-                //TODO: ktoś kupił za dużo sztuk danej pozycji
+                throw new NotEnoughBookException();
             }
         }
         Order order = new Order(this.sessionObject.getUser().getId(),
                 new ArrayList<>(orderPositions),
-                //LocalDateTime.now(),
+                LocalDateTime.now(),
                 Order.State.NEW,
                 this.cartService.calculateCartSum());
 
         this.orderDAO.persistOrder(order);
-
-        //TODO: zablokowanie dodawania ilości książek większej niż na stanie
         this.cartService.clearCart();
 
+    }
+
+    @Override
+    public List<Order> getOrders() {
+        return this.orderDAO.getOrdersByUserId(this.sessionObject.getUser().getId());
     }
 
 }

@@ -1,6 +1,7 @@
 package org.example.controllers;
 
 import jakarta.annotation.Resource;
+import org.example.exceptions.NotEnoughBookException;
 import org.example.services.ICartService;
 import org.example.sessionObject.SessionObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,13 @@ public class CartController {
 
     @RequestMapping(path = "/cart/add/{bookId}", method = RequestMethod.GET)
     public String addBookCart(@PathVariable int bookId){
-        this.cartService.addBookToCart(bookId);
+        try {
+            this.cartService.addBookToCart(bookId);
+        }catch (NotEnoughBookException e){
+            //TODO:co robić w tej sytuacji
+            return "redirect:/";
+        }
+
         return "redirect:/";
     }
 

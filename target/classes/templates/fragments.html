@@ -13,9 +13,10 @@
   <a href="/main" class="button">strona główna</a>
   <a href="/contact" class="button">kontakt</a>
     <a th:if="${sessionObject.isAdmin()}" href="/book/add" class="button">dodaj książkę</a>
+    <a th:if="${sessionObject.isLogged()}" href="/cart" class="button">Koszyk</a>
+    <a th:if="${sessionObject.isLogged()}" href="/order" class="button">Zamówienia</a>
     <a th:if="${!sessionObject.isLogged()}" href="/login" class="button">zaloguj</a>
     <a th:if="${sessionObject.isLogged()}" href="/logout" class="button">wyloguj</a>
-    <a th:if="${sessionObject.isLogged()}" href="/cart" class="button">Koszyk</a>
 
 
 </div>

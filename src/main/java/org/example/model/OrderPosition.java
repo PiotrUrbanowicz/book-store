@@ -1,7 +1,7 @@
 package org.example.model;
 
 public class OrderPosition {
-
+///zamówiona pozycja
     private Book book;
 
     private int quantity;

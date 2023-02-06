@@ -2,6 +2,7 @@ package org.example.services.impl;
 
 import jakarta.annotation.Resource;
 import org.example.database.IBookDAO;
+import org.example.exceptions.NotEnoughBookException;
 import org.example.model.Book;
 import org.example.model.OrderPosition;
 import org.example.services.ICartService;
@@ -37,7 +38,7 @@ public class CartServiceImp implements ICartService {
         }else if(bookBox.get().getQuantity()>cart.get(bookId).getQuantity()){
             cart.get(bookId).incrementQuantity();
         }else{
-            //TODO: wyjątek
+            throw new NotEnoughBookException();
         }
 
     }
