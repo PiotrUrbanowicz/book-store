@@ -2,8 +2,6 @@ package org.example.controllers;
 
 
 import jakarta.annotation.Resource;
-import org.example.database.IBookDAO;
-import org.example.database.memory.BookDB;
 import org.example.services.IBookService;
 import org.example.sessionObject.SessionObject;
 import org.springframework.beans.factory.annotation.Autowired;

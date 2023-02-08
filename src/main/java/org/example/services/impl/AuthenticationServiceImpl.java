@@ -9,7 +9,6 @@ import org.example.model.User;
 import org.example.services.IAuthenticationService;
 import org.example.sessionObject.SessionObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;

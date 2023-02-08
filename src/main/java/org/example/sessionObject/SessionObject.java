@@ -1,6 +1,5 @@
 package org.example.sessionObject;
 
-import org.example.model.Book;
 import org.example.model.OrderPosition;
 import org.example.model.User;
 import org.springframework.stereotype.Component;
@@ -9,7 +8,6 @@ import org.springframework.web.context.annotation.SessionScope;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
-import java.util.Set;
 
 @Component
 @SessionScope

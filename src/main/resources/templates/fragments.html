@@ -7,6 +7,7 @@
 <body>
 <div id="logo" th:fragment="logo">
   <img src="/logo.jpg"><!--czemu to nie działa dla dodaj ksiazke--><!--  <img src="/logo.jpg">  -->
+    <div id="message" th:text="${sessionObject.getInfo().orElse('')}"></div>
 </div>
 
 <div id="menu" th:fragment="menu">

@@ -1,7 +1,6 @@
 package org.example.services.impl;
 
 import jakarta.annotation.Resource;
-import org.example.database.IBookDAO;
 import org.example.database.IOrderDAO;
 import org.example.exceptions.NotEnoughBookException;
 import org.example.model.Order;

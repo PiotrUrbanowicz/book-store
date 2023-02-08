@@ -2,15 +2,12 @@ package org.example.controllers;
 
 import jakarta.annotation.Resource;
 import org.example.exceptions.NotEnoughBookException;
-import org.example.model.OrderPosition;
 import org.example.services.IOrderService;
 import org.example.sessionObject.SessionObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.util.Collection;
 
 @Controller
 public class OrderController {
@@ -27,10 +24,12 @@ public class OrderController {
         try {
             this.orderService.confirmOrder();
         } catch (NotEnoughBookException e) {
-            //TODO:co robić w tej sytuacji
-            return "redirect:/";
+            //informacje z modelu żyją tylko dla tego widoku a więc gdy przekierowójemy na cart to odpalamy nowy widok
+            //nowy controller nowa funkcja i ten model by się usunął
+            this.sessionObject.setInfo("Niepoprawna ilość produktów !!");
+            return "redirect:/cart";
         }
-        return "redirect:/";
+        return "redirect:/cart";
     }
 
     @RequestMapping(path = "/order")

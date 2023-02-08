@@ -8,3 +8,7 @@ czemu przy jednej literówce odnośnie atrybutu (autor a powinno być author) ni
 
 Whitelabel Error Page
 There was an unexpected error (type=Internal Server Error, status=500).
+
+
+Fragments.html:
+<!--czemu to nie działa dla dodaj ksiazke--><!--  <img src="/logo.jpg">  -->

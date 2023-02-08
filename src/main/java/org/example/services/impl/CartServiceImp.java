@@ -21,8 +21,6 @@ public class CartServiceImp implements ICartService {
     @Autowired
     IBookDAO bookDAO;
 
-
-
     @Override
     public void addBookToCart(int bookId) {
 

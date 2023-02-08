@@ -5,6 +5,8 @@
     <title>IT Camp Book Store</title>
     <link rel="stylesheet" href="/common.css">
     <link rel="stylesheet" href="/main.css">
+    <script src="/message.js"></script>
+<!--    bo fragments logo-->
 </head>
 <body>
 <div th:replace="~{fragments.html :: logo}"></div>
@@ -25,13 +27,10 @@
     <div th:text="'Ilosc: ' + ${book.quantity}" class="quantity"></div>
     <a th:if="${sessionObject.isAdmin()}" th:href="@{/book/edit/{id}(id=${book.id})}" class="edit">Edytuj</a>
     <a th:if="${!sessionObject.isAdmin()}" href="/login" class="buy">Zaloguj aby kupić</a>
-    <a th:if="${sessionObject.isLogged()}" th:href="@{/cart/add/{id}(id=${book.id})}" class="buy">Dodaj do koszyka</a>
+    <a th:if="${sessionObject.isLogged()}" th:href="@{/cart/add/{id}(id=${book.id})}" class="buy" onsubmit="return showMessage()">Dodaj do koszyka</a>
 
 
 
-
-<!-- th:if="${sesionObject.isAdmin()}"   -->
-<!--<div th:if="${sessionObject.isAdmin()}" class="edit"> <a href="/book/edit">Edytuj</a></div>-->
 
 </div>
 

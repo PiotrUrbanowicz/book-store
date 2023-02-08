@@ -33,7 +33,7 @@ public class CartController {
         try {
             this.cartService.addBookToCart(bookId);
         }catch (NotEnoughBookException e){
-            //TODO:co robić w tej sytuacji
+            this.sessionObject.setInfo("Nie ma już więcej egzemplarzy !!!");
             return "redirect:/";
         }
 

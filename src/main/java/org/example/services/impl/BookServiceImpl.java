@@ -6,7 +6,6 @@ import org.example.model.Book;
 import org.example.services.IBookService;
 import org.example.sessionObject.SessionObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
