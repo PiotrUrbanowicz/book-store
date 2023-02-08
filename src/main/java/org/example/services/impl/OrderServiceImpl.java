@@ -34,15 +34,16 @@ public class OrderServiceImpl implements IOrderService {
         for (OrderPosition orderPosition:orderPositions) {
             int quantityAfterOrder = orderPosition.getBook().getQuantity()-orderPosition.getQuantity();
 
-            if(quantityAfterOrder>=0) {
-                orderPosition.getBook().setQuantity(quantityAfterOrder);
-            }else{
+            if(quantityAfterOrder<0) {
                 throw new NotEnoughBookException();
             }
+            orderPosition.getBook().setQuantity(quantityAfterOrder);
         }
+
+
         Order order = new Order(this.sessionObject.getUser().getId(),
                 new ArrayList<>(orderPositions),
-                LocalDateTime.now(),
+                LocalDateTime.now().withNano(0),
                 Order.State.NEW,
                 this.cartService.calculateCartSum());
 
