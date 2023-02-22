@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-@Repository
 public class OrderDB implements IOrderDAO {
 
     private final List<Order> orders=new ArrayList<>();

@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@Repository
 public class UserDB implements IUserDAO {
 
     private final List<User> users=new ArrayList<>();
@@ -28,10 +27,6 @@ public class UserDB implements IUserDAO {
 
     }
 
-    @Override
-    public List<User> getUsers() {
-        return this.users;
-    }
 
     @Override
     public Optional<User> getUserByLogin(String login) {

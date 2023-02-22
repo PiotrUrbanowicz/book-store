@@ -1,6 +1,8 @@
 package org.example.model;
 
 public class OrderPosition {
+
+    private int id;
 ///zamówiona pozycja
     private Book book;
 
@@ -9,9 +11,23 @@ public class OrderPosition {
     public OrderPosition() {
     }
 
+
     public OrderPosition(Book book, int quantity) {
         this.book = book;
         this.quantity = quantity;
+    }
+
+    public OrderPosition(int id, Book book, int quantity) {
+        this(book,quantity);
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Book getBook() {

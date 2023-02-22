@@ -19,9 +19,7 @@ public class SessionObject {
 
     public Map<Integer, OrderPosition> getCart() {
         return cart;
-
     }
-
     // key - bookId, value -book and cart quantity
     private final Map<Integer, OrderPosition> cart=new HashMap<>();
 
