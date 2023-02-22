@@ -2,15 +2,12 @@ package org.example.database.memory;
 
 import org.example.database.IBookDAO;
 import org.example.model.Book;
-import org.example.sequence.IBookIdSequence;
-import org.example.sequence.IIdSequence;
+import org.example.database.sequence.IBookIdSequence;
+import org.example.database.sequence.IIdSequence;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 import java.util.Optional;
 
 public class BookDB implements IBookDAO {

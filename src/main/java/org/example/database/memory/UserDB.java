@@ -4,9 +4,8 @@ import org.apache.commons.codec.digest.DigestUtils;
 import org.example.database.IUserDAO;
 import org.example.exceptions.UserLoginExistException;
 import org.example.model.User;
-import org.example.sequence.IIdSequence;
+import org.example.database.sequence.IIdSequence;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;

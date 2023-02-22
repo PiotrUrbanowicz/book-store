@@ -1,4 +1,4 @@
-package org.example.sequence;
+package org.example.database.sequence;
 
 import org.springframework.stereotype.Component;
 

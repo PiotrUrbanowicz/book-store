@@ -1,6 +1,7 @@
 package org.example.services.impl;
 
 import jakarta.annotation.Resource;
+import org.example.database.IBookDAO;
 import org.example.database.IOrderDAO;
 import org.example.exceptions.NotEnoughBookException;
 import org.example.model.Order;
@@ -27,6 +28,8 @@ public class OrderServiceImpl implements IOrderService {
 
     @Autowired
     IOrderDAO orderDAO;
+    @Autowired
+    IBookDAO bookDAO;
 
     @Override
     public void confirmOrder() {
@@ -38,6 +41,7 @@ public class OrderServiceImpl implements IOrderService {
                 throw new NotEnoughBookException();
             }
             orderPosition.getBook().setQuantity(quantityAfterOrder);
+            this.bookDAO.updateBook(orderPosition.getBook());
         }
 
 

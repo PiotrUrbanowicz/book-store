@@ -2,9 +2,8 @@ package org.example.database.memory;
 
 import org.example.database.IOrderDAO;
 import org.example.model.Order;
-import org.example.sequence.IIdSequence;
+import org.example.database.sequence.IIdSequence;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.Iterator;
