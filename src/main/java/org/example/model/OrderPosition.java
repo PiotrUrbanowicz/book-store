@@ -1,9 +1,15 @@
 package org.example.model;
 
-public class OrderPosition {
+import jakarta.persistence.*;
+import org.hibernate.annotations.Cascade;
 
+@Entity(name="torderposition")
+public class OrderPosition implements Saveable {
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id;
 ///zamówiona pozycja
+    @ManyToOne(fetch = FetchType.EAGER)//tu był błąd - czemu nie zapisywał mi się order
     private Book book;
 
     private int quantity;

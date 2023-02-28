@@ -7,8 +7,14 @@ templates: cart.html
 czemu przy jednej literówce odnośnie atrybutu (autor a powinno być author) nie wyświetla się cały html (zwraca błąd)
 
 Whitelabel Error Page
-There was an unexpected error (type=Internal Server Error, status=500).
+There was an unexpected error (type=Internal Server Error, status=5git00).
 
 
 Fragments.html:
 <!--czemu to nie działa dla dodaj ksiazke--><!--  <img src="/logo.jpg">  -->
+
+
+22.02.2023 time: 01:32
+BookDAOImpl.java - methoda persistBook(Book book)
+Robimy RETURN_GENERATED_KEYS tylko po to aby wrzucić go do książki której nigdzie nie urzywamy po co
+niepotrzebnie, bez sensu.

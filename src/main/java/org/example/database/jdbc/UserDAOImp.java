@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.sql.*;
 import java.util.Optional;
 
-@Repository
+
 public class UserDAOImp implements IUserDAO {
 
 

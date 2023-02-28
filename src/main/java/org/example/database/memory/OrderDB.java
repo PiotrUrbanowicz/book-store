@@ -39,9 +39,9 @@ public class OrderDB implements IOrderDAO {
     public List<Order> getOrdersByUserId(int userId) {
         List<Order> result = new ArrayList<>();
         for(Order order : this.orders) {
-            if(order.getUserId() == userId) {
-                result.add(order);
-            }
+//            if(order.getUserId() == userId) {
+//                result.add(order);
+//            }
         }
         return result;
     }

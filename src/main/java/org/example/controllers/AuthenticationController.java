@@ -4,7 +4,7 @@ import jakarta.annotation.Resource;
 import org.example.exceptions.UserLoginExistException;
 import org.example.exceptions.UserValidationException;
 import org.example.model.User;
-import org.example.services.IAuthenticationService;
+import org.example.sessionObject.services.IAuthenticationService;
 import org.example.sessionObject.SessionObject;
 import org.example.validators.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -3,7 +3,7 @@ package org.example.controllers;
 import jakarta.annotation.Resource;
 import org.example.exceptions.BookValidationException;
 import org.example.model.Book;
-import org.example.services.IBookService;
+import org.example.sessionObject.services.IBookService;
 import org.example.sessionObject.SessionObject;
 import org.example.validators.BookValidator;
 import org.springframework.beans.factory.annotation.Autowired;

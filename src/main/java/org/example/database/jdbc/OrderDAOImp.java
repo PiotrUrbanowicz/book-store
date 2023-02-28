@@ -12,7 +12,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Repository
+
 public class OrderDAOImp implements IOrderDAO {
 
     @Autowired
@@ -28,7 +28,7 @@ public class OrderDAOImp implements IOrderDAO {
                     "VALUES (?,?,?,?)";
             PreparedStatement ps = this.connection.prepareStatement(sql,
                     Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, order.getUserId());
+            //ps.setInt(1, order.getUserId());
             ps.setTimestamp(2, Timestamp.valueOf(order.getDate()));
             ps.setString(3, order.getState().toString());
             ps.setDouble(4, order.getTotal());
@@ -63,14 +63,14 @@ public class OrderDAOImp implements IOrderDAO {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 int orderId = rs.getInt("id");
-                result.add(new Order(
-                        orderId,
-                        rs.getInt("user_id"),
-                        this.orderPositionDAO.getOrderPositionByOrderId(orderId),
-                        rs.getTimestamp("date").toLocalDateTime(),
-                        Order.State.valueOf(rs.getString("state")),
-                        rs.getDouble("total")
-                ));
+//                result.add(new Order(
+//                        orderId,
+//                        rs.getInt("user_id"),
+//                        this.orderPositionDAO.getOrderPositionByOrderId(orderId),
+//                        rs.getTimestamp("date").toLocalDateTime(),
+//                        Order.State.valueOf(rs.getString("state")),
+//                        rs.getDouble("total")
+//                ));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

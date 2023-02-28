@@ -1,13 +1,24 @@
 package org.example.model;
 
-public class User implements Cloneable{
+import jakarta.persistence.*;
+
+import java.util.HashSet;
+import java.util.Set;
+
+@Entity(name="tuser")
+public class User implements Cloneable, Saveable{
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
         private int id;
         private String name;
         private String surname;
+        @Column(unique = true)
         private String login;
         private String password;
+        @Enumerated(value=EnumType.STRING)
         private Role role;
-
+         @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+         private Set<Order> orders = new HashSet<>();
 
         public User(int id, String name, String surname, String login, String password,Role role) {
             this.id = id;
@@ -67,6 +78,14 @@ public class User implements Cloneable{
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public Set<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(Set<Order> orders) {
+        this.orders = orders;
     }
 
     public enum Role {

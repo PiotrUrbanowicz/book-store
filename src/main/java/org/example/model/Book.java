@@ -1,6 +1,11 @@
 package org.example.model;
 
-public class Book {
+import jakarta.persistence.*;
+
+@Entity(name="tbook")
+public class Book implements Saveable {
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id;
     private String title;
     private String author;
