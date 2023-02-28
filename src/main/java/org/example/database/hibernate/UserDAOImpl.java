@@ -13,8 +13,6 @@ import java.util.Optional;
 @Repository
 public class UserDAOImpl extends EntityManager implements IUserDAO {
 
-    SessionFactory sessionFactory;
-
     public UserDAOImpl(@Autowired SessionFactory sessionFactory) {
         super(sessionFactory);
     }

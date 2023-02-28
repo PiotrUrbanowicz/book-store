@@ -17,8 +17,6 @@ import java.util.Queue;
 @Repository
 public class BookDAOImpl extends EntityManager implements IBookDAO {
 
-    SessionFactory sessionFactory;
-
     public BookDAOImpl(@Autowired SessionFactory sessionFactory) {
         super(sessionFactory);
     }
