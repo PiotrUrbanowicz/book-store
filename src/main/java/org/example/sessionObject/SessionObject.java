@@ -26,12 +26,15 @@ public class SessionObject {
    public boolean isLogged(){
        return this.user!=null;
    }
+
     public User getUser() {
         return user;
     }
+
     public void setUser(User user) {
         this.user = user;
     }
+
     public Optional<String> getPattern() {
         Optional<String> temp=this.pattern;
         this.pattern=Optional.empty();

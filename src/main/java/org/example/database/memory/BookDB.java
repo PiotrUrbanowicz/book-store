@@ -61,25 +61,33 @@ public class BookDB implements IBookDAO {
     }
 
     @Override
-    public List<Book> getBooksByPattern(String pattern) {
-        List<Book> filtredBooks=new ArrayList<>();
-        for (Book book:books) {
-            if(book.getTitle().toLowerCase().contains(pattern.toLowerCase()) ||
-                    book.getAuthor().toLowerCase().contains(pattern.toLowerCase())){
-                filtredBooks.add(book);
-            }
-        }
-        return filtredBooks;
+    public List<Book> getBooksByPattern(final String pattern) {
+//        List<Book> filtredBooks=new ArrayList<>();
+//        for (Book book:books) {
+//            if(book.getTitle().toLowerCase().contains(pattern.toLowerCase()) ||
+//                    book.getAuthor().toLowerCase().contains(pattern.toLowerCase())){
+//                filtredBooks.add(book);
+//            }
+//        }
+//        return filtredBooks;
+
+        return books.stream()
+                .filter(book -> book.getTitle().toLowerCase().contains(pattern.toLowerCase()) ||
+                                book.getAuthor().toLowerCase().contains(pattern.toLowerCase()))
+                .toList();
     }
 
     @Override
-    public Optional<Book> getBookById(int id) {
-        for (Book book : this.books) {
-            if(book.getId()==id){
-                return Optional.of(book);
-            }
-        }
-        return Optional.empty();
+    public Optional<Book> getBookById(final int id) {
+//        for (Book book : this.books) {
+//            if(book.getId()==id){
+//                return Optional.of(book);
+//            }
+//        }
+//        return Optional.empty();
+    return books.stream()
+            .filter(b->b.getId()==id)
+            .findFirst();
     }
 
     @Override

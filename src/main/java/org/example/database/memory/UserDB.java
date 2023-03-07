@@ -28,13 +28,18 @@ public class UserDB implements IUserDAO {
 
 
     @Override
-    public Optional<User> getUserByLogin(String login) {
-        for (User user: this.users) {
-            if(user.getLogin().equals(login)){
-                return Optional.of(user);
-            }
-        }
-        return Optional.empty();
+    public Optional<User> getUserByLogin(final String login) {
+//        for (User user: this.users) {
+//            if(user.getLogin().equals(login)){
+//                return Optional.of(user);
+//            }
+//        }
+//        return Optional.empty();
+
+        return this.users.stream()
+                .filter(x->x.getLogin().equals(login))
+                .findFirst();
+
     }
 
 

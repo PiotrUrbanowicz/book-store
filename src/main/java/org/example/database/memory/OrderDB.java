@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class OrderDB implements IOrderDAO {
 
@@ -37,13 +38,20 @@ public class OrderDB implements IOrderDAO {
 
     @Override
     public List<Order> getOrdersByUserId(int userId) {
-        List<Order> result = new ArrayList<>();
-        for(Order order : this.orders) {
-//            if(order.getUserId() == userId) {
-//                result.add(order);
-//            }
-        }
-        return result;
+//        List<Order> result = new ArrayList<>();
+//        for(Order order : this.orders) {
+////            if(order.getUserId() == userId) {
+////                result.add(order);
+////            }
+//        }
+//        return result;
+
+//    return this.orders.stream()
+//            .filter(order->order.getUserId()==userId)
+//            .toList();
+
+        return null;
+
     }
 
 

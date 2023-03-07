@@ -63,11 +63,17 @@ public class CartServiceImp implements ICartService {
 
     @Override
     public double calculateCartSum() {
-        double sum=0;
-        for (OrderPosition orderPosition: this.getCart()) {
-            sum+=orderPosition.getBook().getPrice()*orderPosition.getQuantity();
-        }
-        return sum;
+//        double sum=0;
+//        for (OrderPosition orderPosition: this.getCart()) {
+//            sum+=orderPosition.getBook().getPrice()*orderPosition.getQuantity();
+//        }
+//        return sum;
+
+        return this.getCart().stream()
+                .mapToDouble(
+                        orderPosition->orderPosition.getBook().getPrice()*orderPosition.getQuantity())
+                .sum();
+
     }
 
 
