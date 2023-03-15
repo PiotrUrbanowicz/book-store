@@ -17,7 +17,7 @@ public class User implements Cloneable, Saveable{
         private String password;
         @Enumerated(value=EnumType.STRING)
         private Role role;
-         @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+         @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
          private Set<Order> orders = new HashSet<>();
 
         public User(int id, String name, String surname, String login, String password,Role role) {

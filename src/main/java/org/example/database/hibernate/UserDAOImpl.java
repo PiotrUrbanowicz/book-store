@@ -1,5 +1,6 @@
 package org.example.database.hibernate;
 
+import jdk.jshell.spi.ExecutionControl;
 import org.example.database.IUserDAO;
 import org.example.model.User;
 import org.hibernate.Session;
@@ -34,6 +35,26 @@ public class UserDAOImpl extends EntityManager implements IUserDAO {
     public void persistUser(User user) {
         super.persist(user);
         }
+
+    @Override
+    public Optional<User> getUserById(int UserId) {
+        Session session=sessionFactory.openSession();
+        Query<User> query=session.createQuery("FROM org.example.model.User WHERE id = :id",User.class);
+        query.setParameter("id",UserId);
+        Optional<User> result=Optional.empty();
+        try{
+            result= Optional.of(query.getSingleResult());
+        }catch (Exception e){}
+        session.close();
+        return result;
+    }
+
+    @Override
+    public void updateUser(User user) {
+        super.update(user);
+    }
+
+
 }
 
 

@@ -2,8 +2,8 @@ package org.example.controllers;
 
 import jakarta.annotation.Resource;
 import org.example.exceptions.NotEnoughBookException;
-import org.example.sessionObject.services.IOrderService;
-import org.example.sessionObject.SessionObject;
+import org.example.services.IOrderService;
+import org.example.model.sessionObject.SessionObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,7 +35,7 @@ public class OrderController {
     @RequestMapping(path = "/order")
     public String order(Model model) {
         model.addAttribute("sessionObject", this.sessionObject);
-        model.addAttribute("orders",this.orderService.getOrders());
+        model.addAttribute("orders",this.orderService.getOrdersForCurrentUser());
         return "orders";
     }
 

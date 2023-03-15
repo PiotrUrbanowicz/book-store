@@ -1,5 +1,6 @@
 package org.example.database.jdbc;
 
+import jdk.jshell.spi.ExecutionControl;
 import org.example.database.IUserDAO;
 import org.example.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,5 +59,15 @@ public class UserDAOImp implements IUserDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public Optional<User> getUserById(int id) throws ExecutionControl.NotImplementedException {
+        throw new ExecutionControl.NotImplementedException("not impelemented");
+    }
+
+    @Override
+    public void updateUser(User user) throws ExecutionControl.NotImplementedException {
+        throw new ExecutionControl.NotImplementedException("not impelemented");
     }
 }

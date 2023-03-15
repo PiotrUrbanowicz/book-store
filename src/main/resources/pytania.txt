@@ -1,0 +1,9 @@
+rest - czemu przy
+RestApiBookController method: editBook zwracamy książkę a nie ResponseEntity<Book>
+
+saveOrderRequest po co w ogóle wysyłamy uproszczony model jako json a nie normalny
+
+czemu przy restowym edytowaniu książki zwracamy tylko book bez HttpStatus
+
+
+Set a List

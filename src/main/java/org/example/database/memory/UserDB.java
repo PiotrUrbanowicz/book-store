@@ -1,5 +1,6 @@
 package org.example.database.memory;
 
+import jdk.jshell.spi.ExecutionControl;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.example.database.IUserDAO;
 import org.example.exceptions.UserLoginExistException;
@@ -52,6 +53,17 @@ public class UserDB implements IUserDAO {
             user.setPassword(DigestUtils.md5Hex(user.getPassword()));//bo zapisało by się nie zachaszowane
             users.add(user);
         }
-
     }
+
+    @Override
+    public Optional<User> getUserById(int id) throws ExecutionControl.NotImplementedException {
+        throw new ExecutionControl.NotImplementedException("not impelemented");
+    }
+
+    @Override
+    public void updateUser(User user) throws ExecutionControl.NotImplementedException {
+        throw new ExecutionControl.NotImplementedException("not impelemented");
+    }
+
+
 }

@@ -2,8 +2,8 @@ package org.example.controllers;
 
 
 import jakarta.annotation.Resource;
-import org.example.sessionObject.services.IBookService;
-import org.example.sessionObject.SessionObject;
+import org.example.services.IBookService;
+import org.example.model.sessionObject.SessionObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 

@@ -22,8 +22,6 @@ public class OrderDAOImpl implements IOrderDAO {
 
     @Override
     public void persistOrder(Order order) {
-
-        System.out.println("-----------persistOrder");
         Session session=sessionFactory.openSession();
         try {
             session.beginTransaction();
@@ -37,7 +35,6 @@ public class OrderDAOImpl implements IOrderDAO {
         }finally {
             session.close();
         }
-        System.out.println("-----------persistOrder");
     }
 
     @Override
