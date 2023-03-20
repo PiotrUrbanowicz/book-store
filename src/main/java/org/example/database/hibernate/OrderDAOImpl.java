@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class OrderDAOImpl implements IOrderDAO {
@@ -41,7 +42,7 @@ public class OrderDAOImpl implements IOrderDAO {
     public void updateOrder(Order order) throws ExecutionControl.NotImplementedException {
         throw new ExecutionControl.NotImplementedException("Niepotrzebna metoda !!");
     }
-//this.sessionObject.getUser().getId()
+
     @Override
     public List<Order> getOrdersByUserId(int userId) {
 //        Session session = this.sessionFactory.openSession();
@@ -63,7 +64,21 @@ public class OrderDAOImpl implements IOrderDAO {
         try {
             User user = query.getSingleResult();
             result = new ArrayList<>(user.getOrders());//dopiero tu się zaciągają ordery bo są zaciągane LAZY
-        } catch (NoResultException e) {}
+        } catch (NoResultException ignored) {}
+        session.close();
+        return result;
+    }
+
+    @Override
+    public Optional<Order> getOrderById(int orderId){
+        Session session=this.sessionFactory.openSession();
+        Query<Order> query=session.createQuery("From org.example.model.Order WHERE id=:id",Order.class);
+        query.setParameter("id",orderId);
+
+        Optional<Order> result=Optional.empty();
+        try {
+            result = Optional.ofNullable(query.getSingleResult());
+        }catch (NoResultException ignored){}
         session.close();
         return result;
     }

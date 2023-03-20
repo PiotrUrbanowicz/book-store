@@ -29,7 +29,7 @@ public class RestApiBookController {
     }
 
     @RequestMapping(path = "", method = RequestMethod.POST)
-    public ResponseEntity<Book> saveBook(@RequestBody Book book) {
+    public ResponseEntity<Book> persistBook(@RequestBody Book book) {
             this.bookService.persistBook(book);
             return ResponseEntity.status(HttpStatus.CREATED).body(book);
         }
@@ -49,7 +49,8 @@ public class RestApiBookController {
         this.bookService.updateBook(book,bookId);
             return book;
 
-        }
+        }//może tak być bo??
+    //a co jeśli będzie błąd
 
 
 }

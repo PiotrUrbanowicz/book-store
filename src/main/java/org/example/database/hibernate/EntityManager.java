@@ -1,8 +1,11 @@
 package org.example.database.hibernate;
 
+import org.example.exceptions.UserLoginExistException;
 import org.example.model.Saveable;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+
+import java.sql.SQLException;
 
 public abstract class EntityManager {
 
@@ -12,16 +15,15 @@ public abstract class EntityManager {
         this.sessionFactory = sessionFactory;
     }
 
-    public void persist(Saveable o)  {
+    public void persist(Saveable o) throws UserLoginExistException  {
         Session session=sessionFactory.openSession();
         try {
             session.beginTransaction();
             session.persist(o);
             session.getTransaction().commit();
-        }catch (Exception e){
-            session.getTransaction().rollback();
-        }finally {
             session.close();
+        }catch (Exception e){
+            throw new UserLoginExistException();
         }
     }
 

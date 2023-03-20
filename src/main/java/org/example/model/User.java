@@ -2,7 +2,9 @@ package org.example.model;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity(name="tuser")
@@ -18,7 +20,7 @@ public class User implements Cloneable, Saveable{
         @Enumerated(value=EnumType.STRING)
         private Role role;
          @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-         private Set<Order> orders = new HashSet<>();
+         private List<Order> orders = new ArrayList<>();
 
         public User(int id, String name, String surname, String login, String password,Role role) {
             this.id = id;
@@ -80,11 +82,11 @@ public class User implements Cloneable, Saveable{
         this.role = role;
     }
 
-    public Set<Order> getOrders() {
+    public List<Order> getOrders() {
         return orders;
     }
 
-    public void setOrders(Set<Order> orders) {
+    public void setOrders(List<Order> orders) {
         this.orders = orders;
     }
 

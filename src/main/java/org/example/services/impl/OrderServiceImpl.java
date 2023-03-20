@@ -11,6 +11,7 @@ import org.example.model.Book;
 import org.example.model.Order;
 import org.example.model.OrderPosition;
 import org.example.model.User;
+import org.example.model.dto.OrderDTO;
 import org.example.model.dto.SaveOrderRequest;
 import org.example.services.ICartService;
 import org.example.services.IOrderService;
@@ -80,10 +81,9 @@ public class OrderServiceImpl implements IOrderService {
     public List<Order> getOrdersByUserId(int id) {
         return this.orderDAO.getOrdersByUserId(id)
                 .stream()
-                .peek(o->{
-                    o.getUser().setOrders(null);
-                    o.getUser().setPassword("*****");
-                }).toList();
+                .peek(o->o.getUser().setOrders(null))
+                .peek(o->o.getUser().setPassword("****"))
+                .toList();
     }
 
     @Override
@@ -123,6 +123,11 @@ public class OrderServiceImpl implements IOrderService {
         userBox.get().setPassword("*****");
 
         return order;
+    }
+
+    @Override
+    public Optional<Order> getOrderById(int orderId) throws ExecutionControl.NotImplementedException {
+        return this.orderDAO.getOrderById(orderId);
     }
 
 

@@ -3,6 +3,7 @@ package org.example.model;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
@@ -17,7 +18,7 @@ public class Order implements Saveable{
 
     //cascade jeśli zapiszesz order w bazie to zapiszą się też wrzystkie OrderPozycje w bazie!!!
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    private List<OrderPosition> positions = new LinkedList<>();
+    private List<OrderPosition> positions = new ArrayList<>();
 
     private LocalDateTime date;
     @Enumerated(value = EnumType.STRING)

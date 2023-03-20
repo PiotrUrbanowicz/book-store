@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 public class OrderDAOImp implements IOrderDAO {
@@ -76,5 +77,10 @@ public class OrderDAOImp implements IOrderDAO {
             throw new RuntimeException(e);
         }
         return result;
+    }
+
+    @Override
+    public Optional<Order> getOrderById(int orderId) throws ExecutionControl.NotImplementedException {
+        throw new ExecutionControl.NotImplementedException("not impelemented");
     }
 }

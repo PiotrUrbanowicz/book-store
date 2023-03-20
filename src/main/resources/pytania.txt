@@ -7,3 +7,16 @@ czemu przy restowym edytowaniu książki zwracamy tylko book bez HttpStatus
 
 
 Set a List
+
+//bez throws u góry bo po co? Nie jest to konieczne -
+
+    public void persist(Saveable o) throws UserLoginExistException  {
+        Session session=sessionFactory.openSession();
+        try {
+            session.beginTransaction();
+            session.persist(o);
+            session.getTransaction().commit();
+            session.close();
+        }catch (Exception e){
+            throw new UserLoginExistException();
+        }

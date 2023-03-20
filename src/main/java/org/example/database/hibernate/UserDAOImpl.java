@@ -37,10 +37,10 @@ public class UserDAOImpl extends EntityManager implements IUserDAO {
         }
 
     @Override
-    public Optional<User> getUserById(int UserId) {
+    public Optional<User> getUserById(int userId) {
         Session session=sessionFactory.openSession();
         Query<User> query=session.createQuery("FROM org.example.model.User WHERE id = :id",User.class);
-        query.setParameter("id",UserId);
+        query.setParameter("id",userId);
         Optional<User> result=Optional.empty();
         try{
             result= Optional.of(query.getSingleResult());

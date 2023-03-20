@@ -1,5 +1,6 @@
 package org.example.database.memory;
 
+import jdk.jshell.spi.ExecutionControl;
 import org.example.database.IOrderDAO;
 import org.example.model.Order;
 import org.example.database.sequence.IIdSequence;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class OrderDB implements IOrderDAO {
@@ -52,6 +54,11 @@ public class OrderDB implements IOrderDAO {
 
         return null;
 
+    }
+
+    @Override
+    public Optional<Order> getOrderById(int orderId) throws ExecutionControl.NotImplementedException {
+        throw new ExecutionControl.NotImplementedException("Not Implemented");
     }
 
 

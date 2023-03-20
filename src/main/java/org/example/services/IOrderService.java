@@ -2,7 +2,6 @@ package org.example.services;
 
 import jdk.jshell.spi.ExecutionControl;
 import org.example.model.Order;
-import org.example.model.dto.OrderDTO;
 import org.example.model.dto.SaveOrderRequest;
 
 import java.util.List;
@@ -17,4 +16,5 @@ public interface IOrderService {
 
     Order persistOrder(SaveOrderRequest orderRequest) throws ExecutionControl.NotImplementedException;
 
+    Optional<Order> getOrderById(int OrderId) throws ExecutionControl.NotImplementedException;
 }

@@ -1,8 +1,10 @@
 package org.example.database.jdbc;
 
+import jdk.jshell.spi.ExecutionControl;
 import org.example.database.IBookDAO;
 import org.example.database.IOrderPositionDAO;
 import org.example.model.Book;
+import org.example.model.Order;
 import org.example.model.OrderPosition;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -60,5 +62,10 @@ public class OrderPositionDAOImp implements IOrderPositionDAO {
             throw new RuntimeException(e);
         }
         return result;
+    }
+
+    @Override
+    public Optional<OrderPosition> getOrderPositionById(int id) throws ExecutionControl.NotImplementedException {
+      throw new ExecutionControl.NotImplementedException("Not Implemented");
     }
 }
