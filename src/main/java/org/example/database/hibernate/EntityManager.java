@@ -32,12 +32,20 @@ public abstract class EntityManager {
         Session session=sessionFactory.openSession();
         try {
             session.beginTransaction();
+            System.out.println("1");
             session.merge(o);
+            System.out.println("2");
             session.getTransaction().commit();
+            System.out.println("3");
         }catch (Exception e){
+
+            System.out.println("4");
             session.getTransaction().rollback();
+            System.out.println("5");
         }finally {
+            System.out.println("6");
             session.close();
+            System.out.println("7");
         }
     }
 }

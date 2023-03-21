@@ -1,6 +1,7 @@
 package org.example.model;
 
 import jakarta.persistence.*;
+import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -8,6 +9,11 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 @Entity(name="torder")
 public class Order implements Saveable{
     @Id
@@ -25,8 +31,7 @@ public class Order implements Saveable{
     private State state;
     private double total;
 
-    public Order() {
-    }
+
 
     public Order(User user, List<OrderPosition> positions, LocalDateTime date, State state, double total) {
         this.user = user;
@@ -34,73 +39,6 @@ public class Order implements Saveable{
         this.date = date;
         this.state = state;
         this.total = total;
-    }
-
-    public Order(int id, User user, List<OrderPosition> positions, LocalDateTime date, State state, double total) {
-        this(user,positions,date,state,total);
-        this.id = id;
-
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public User getUser() {
-        System.out.println(this.toString());
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public List<OrderPosition> getPositions() {
-        return positions;
-    }
-
-    public void setPositions(List<OrderPosition> positions) {
-        this.positions = positions;
-    }
-
-    public LocalDateTime getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDateTime date) {
-        this.date = date;
-    }
-
-    public State getState() {
-        return state;
-    }
-
-    public void setState(State state) {
-        this.state = state;
-    }
-
-    public double getTotal() {
-        return total;
-    }
-
-    public void setTotal(double total) {
-        this.total = total;
-    }
-
-    @Override
-    public String toString() {
-        return "Order{" +
-                "id=" + id +
-                ", user=" + user +
-                ", positions=" + positions +
-                ", date=" + date +
-                ", state=" + state +
-                ", total=" + total +
-                '}';
     }
 
     public enum State {

@@ -1,6 +1,9 @@
 package org.example.model.dto;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.example.model.Order;
 import org.example.model.OrderPosition;
 import org.example.model.User;
@@ -9,6 +12,9 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
+@Setter
+@NoArgsConstructor
 public class OrderDTO {
 
     private int id;
@@ -17,9 +23,6 @@ public class OrderDTO {
     private LocalDateTime date;
     private Order.State state;
     private double total;
-
-    public OrderDTO() {
-    }
 
     public OrderDTO(Order order) {
         this.id = order.getId();
@@ -34,54 +37,4 @@ public class OrderDTO {
                 .toList();
     }
 
-    public String getUser() {
-        return user;
-    }
-
-    public void setUser(String user) {
-        this.user = user;
-    }
-
-    public List<String> getPositions() {
-        return positions;
-    }
-
-    public void setPositions(List<String> positions) {
-        this.positions = positions;
-    }
-
-    public LocalDateTime getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDateTime date) {
-        this.date = date;
-    }
-
-    public Order.State getState() {
-        return state;
-    }
-
-    public void setState(Order.State state) {
-        this.state = state;
-    }
-
-    public double getTotal() {
-        return total;
-    }
-
-    public void setTotal(double total) {
-        this.total = total;
-    }
-
-    @Override
-    public String toString() {
-        return "OrderDTO{" +
-                "user='" + user + '\'' +
-                ", positions=" + positions +
-                ", date=" + date +
-                ", state=" + state +
-                ", total=" + total +
-                '}';
-    }
 }

@@ -49,8 +49,6 @@ public class RestApiBookController {
         this.bookService.updateBook(book,bookId);
             return book;
 
-        }//może tak być bo??
-    //a co jeśli będzie błąd
-
+        }
 
 }

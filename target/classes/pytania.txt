@@ -20,3 +20,12 @@ Set a List
         }catch (Exception e){
             throw new UserLoginExistException();
         }
+
+
+        ---------------------------------------------------------------------
+        czemu RestApiBookController:editBook nie zwraca ResponseEntity<Book>
+        Wiem że book się zsynchronizowuje z bazą ale nadal nie codu odpowiedzi.
+        A co jeśli nie ma takiego obiektu z takim id
+        To samo tyczy się ordersDTO.
+
+        Jak to działa hibernate

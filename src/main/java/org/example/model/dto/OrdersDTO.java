@@ -1,8 +1,5 @@
 package org.example.model.dto;
 
-
-import org.example.model.Order;
-
 import java.util.ArrayList;
 import java.util.List;
 
